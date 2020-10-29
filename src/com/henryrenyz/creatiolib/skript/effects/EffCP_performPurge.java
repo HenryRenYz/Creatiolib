@@ -33,8 +33,6 @@ public class EffCP_performPurge extends Effect {
 
     @Override
     protected void execute(Event event) {
-        if (timespan == null)  return;
-
         CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
         if (CoreProtect == null)  return;
         else {

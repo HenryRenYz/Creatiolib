@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Creatio Lib:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Creatio_Lib_jar</output-path>
+    <root id="archive" name="Creatio Lib.jar">
+      <element id="module-output" name="Creatio Lib" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

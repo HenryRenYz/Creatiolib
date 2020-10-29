@@ -1,6 +1,10 @@
 package com.henryrenyz.creatiolib.skript.effects;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -13,6 +17,12 @@ import org.bukkit.event.Event;
 
 import com.henryrenyz.creatiolib.packets.Packets;
 
+@Name("Generate Packet Particle")
+@Description({"Send a particle packet to player, this is client side.","setting particle name to something like \"REDSTONE,-0.01,-2,-0.01\" allows you to generate wierd particles."})
+@Examples({"gen 120 \"flame\" packet particles at event-player for all players offset by 1, 2, 3 with speed 0.15 force true"
+        ,"\tgenerate 55 \"Item_Crack\" packet particles at event-player for {_player::*} offset by 0.1,0.2,0.3 with speed 0.5 force false with data {_itemstack}"
+        ,"\tspawn 55 \"minecraft:dust,-0.01,-0.01,-0.01,2\" packet particles at event-player for event-player offset by 0.1,0.2,0.1 with speed 123 force true"})
+@Since("0.1.00")
 public class Eff_genParticlePacket extends Effect {
 
     static {
@@ -66,10 +76,10 @@ public class Eff_genParticlePacket extends Effect {
         if (data != null) { Data[0] = data.getSingle(event);}
 
         if (List[0].contains("minecraft:")) {
-            particle = List[0];
+            particle = List[0].toUpperCase();
             particle = particle.replace("minecraft:","").toUpperCase();
         } else {
-            particle = EnumMinecraftParticle.valueOf(List[0]).getKey().toUpperCase();
+            particle = EnumMinecraftParticle.valueOf(List[0].toUpperCase()).getKey().toUpperCase();
         }
         if (particle.equalsIgnoreCase("DUST")) {
             Data[0] = Float.parseFloat(List[1]);

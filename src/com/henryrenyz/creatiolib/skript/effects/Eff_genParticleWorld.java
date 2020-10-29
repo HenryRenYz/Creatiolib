@@ -1,6 +1,10 @@
 package com.henryrenyz.creatiolib.skript.effects;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -11,7 +15,10 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 
-
+@Name("Generate World Particle")
+@Description({"Generate particle that is visible for everyone."})
+@Examples({"generate \"Flame\" public particles at player for player offset by 1,1,1 and speed 1"})
+@Since("0.1.00")
 public class Eff_genParticleWorld extends Effect {
 
     static {
@@ -59,8 +66,8 @@ public class Eff_genParticleWorld extends Effect {
         } else {
             Number = 1;
         }
-        if (Particle.valueOf(name.getSingle(event)) instanceof Particle) {
-            particle = Particle.valueOf(name.getSingle(event));
+        if (Particle.valueOf(name.getSingle(event).toUpperCase()) instanceof Particle) {
+            particle = Particle.valueOf(name.getSingle(event).toUpperCase());
         } else {
             particle = Particle.ASH;
         }

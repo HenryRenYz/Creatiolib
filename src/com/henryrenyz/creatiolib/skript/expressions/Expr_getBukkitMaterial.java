@@ -52,17 +52,4 @@ public class Expr_getBukkitMaterial extends SimpleExpression<Material> {
         }
         return null;
     }
-
-    /* #This is useless for this expression
-    @Override
-    public void change(Event event, Object[] delta, ChangeMode mode){
-        //Still explaining this
-    }
-
-    @Override
-    public Class<?>[] acceptChange(final ChangeMode mode) {
-        //Still explaining this
-        return null;
-    }
-    */
 }

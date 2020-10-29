@@ -15,18 +15,19 @@ import org.bukkit.event.Event;
 
 import java.util.List;
 
-public class Expr_blockLookup extends SimpleExpression<List> {
+public class Expr_blockLookup extends SimpleExpression<String> {
 
     static {
-        Skript.registerExpression(Expr_blockLookup.class, List.class, ExpressionType.COMBINED, "[the] core[ ]protect block lookup [result] of %block% [from] last %timespan%");
+        Skript.registerExpression(Expr_blockLookup.class, String.class, ExpressionType.COMBINED, "[the] core[ ]protect block lookup (result|index) %number% of %block% [from] last %timespan%");
     }
 
+    private Expression<Integer> index;
     private Expression<Block> block;
     private Expression<Timespan> timespan;
 
     @Override
-    public Class<? extends List> getReturnType() {
-        return List.class;
+    public Class<? extends String> getReturnType() {
+        return String.class;
     }
 
     @Override
@@ -37,24 +38,25 @@ public class Expr_blockLookup extends SimpleExpression<List> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parser) {
-        block = (Expression<Block>) exprs[0];
-        timespan = (Expression<Timespan>) exprs[1];
+        index = (Expression<Integer>) exprs[0];
+        block = (Expression<Block>) exprs[1];
+        timespan = (Expression<Timespan>) exprs[2];
         return true;
     }
 
     @Override
     public String toString(@Nullable Event event, boolean debug) {
-        return "[the] core[ ]protect block lookup [result] of %block% [from] last %timespan%";
+        return "[the] core[ ]protect block lookup (result|index) %number% of %block% [from] last %timespan%";
     }
 
     @Override
     @Nullable
-    protected List[] get(Event event) {
+    protected String[] get(Event event) {
         CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
         int Timespan = (int)timespan.getSingle(event).getMilliSeconds()/1000;
         List<String[]> list = CoreProtect.blockLookup(block.getSingle(event), Timespan);
         if (list != null) {
-            return new List[] {list};
+            return list.get(index.getSingle(event).intValue());
         }
         return null;
     }

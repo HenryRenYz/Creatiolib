@@ -35,9 +35,6 @@ public class EffCP_logInteraction extends Effect {
 
     @Override
     protected void execute(Event event) {
-        if (string == null)  return;
-        if (location == null)  return;
-
         CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
         CoreProtect.logInteraction(string.getSingle(event), location.getSingle(event));
     }

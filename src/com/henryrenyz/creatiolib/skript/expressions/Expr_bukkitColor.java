@@ -8,9 +8,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import com.sun.istack.internal.Nullable;
 import org.bukkit.Color;
-import org.bukkit.Material;
 import org.bukkit.event.Event;
-import org.bukkit.inventory.ItemStack;
 
 public class Expr_bukkitColor extends SimpleExpression<Color> {
 

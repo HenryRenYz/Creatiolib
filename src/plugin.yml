@@ -1,5 +1,5 @@
 name: CreatioLib
-version: 0.0.01
+version: 0.1.00
 main: com.henryrenyz.creatiolib.Creatio
 api-version: 1.13
 softdepend: [Skript, CoreProtect, ProtocolLib]

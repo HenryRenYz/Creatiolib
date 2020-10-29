@@ -1,6 +1,10 @@
 package com.henryrenyz.creatiolib.skript.effects;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -15,7 +19,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 
-
+@Name("Generate Player Particle")
+@Description({"Generate particle that only visible for specific players."})
+@Examples({"generate \"Flame\" client particles at player for player offset by 1,1,1 and speed 1"})
+@Since("0.1.00")
 public class Eff_genParticlePlayer extends Effect {
 
     static {
@@ -65,8 +72,8 @@ public class Eff_genParticlePlayer extends Effect {
         } else {
             Number = 1;
         }
-        if (Particle.valueOf(name.getSingle(event)) instanceof Particle) {
-            particle = Particle.valueOf(name.getSingle(event));
+        if (Particle.valueOf(name.getSingle(event).toUpperCase()) instanceof Particle) {
+            particle = Particle.valueOf(name.getSingle(event).toUpperCase());
         } else {
             particle = Particle.ASH;
         }

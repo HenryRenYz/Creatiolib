@@ -41,10 +41,6 @@ public class EffCP_logPlacement extends Effect {
 
     @Override
     protected void execute(Event event) {
-        if (string == null)  return;
-        if (location == null)  return;
-        if (material == null)  return;
-
         CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
         if (CoreProtect == null)  return;
         else {

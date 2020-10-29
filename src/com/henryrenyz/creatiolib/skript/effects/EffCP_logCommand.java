@@ -35,9 +35,6 @@ public class EffCP_logCommand extends Effect {
 
     @Override
     protected void execute(Event event) {
-        if (player == null)  return;
-        if (string == null)  return;
-
         CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
         if (CoreProtect == null)  return;
         else {
