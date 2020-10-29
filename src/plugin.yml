@@ -1,0 +1,13 @@
+name: CreatioLib
+version: 0.0.01
+main: com.henryrenyz.creatiolib.Creatio
+api-version: 1.13
+softdepend: [Skript, CoreProtect, ProtocolLib]
+authors: [HenryRenYz]
+description: A small lib for utilities
+commands:
+  creatio:
+    description: 主指令
+    usage: /<command>
+    permission: <plugin name>.basic
+    permission-message: 你不能这么做！
