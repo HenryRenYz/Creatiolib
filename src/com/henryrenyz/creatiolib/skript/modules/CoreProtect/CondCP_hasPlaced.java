@@ -1,4 +1,4 @@
-package com.henryrenyz.creatiolib.skript.conditions;
+package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Condition;
@@ -6,7 +6,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
-import com.henryrenyz.creatiolib.plugins.API_CoreProtect;
+import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.block.Block;
@@ -41,7 +41,7 @@ public class CondCP_hasPlaced extends Condition {
 
     @Override
     public boolean check(Event event) {
-        CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
+        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
         int T1 = (int)timespan1.getSingle(event).getMilliSeconds()/1000;
         int T2 = (int)timespan2.getSingle(event).getMilliSeconds()/1000;
         boolean enable = CoreProtect.hasPlaced(string.getSingle(event),block.getSingle(event),T1,T2);

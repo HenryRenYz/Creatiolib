@@ -77,7 +77,7 @@ public class Eff_genParticlePacket extends Effect {
 
         if (List[0].contains("minecraft:")) {
             particle = List[0].toUpperCase();
-            particle = particle.replace("minecraft:","").toUpperCase();
+            particle = particle.replace("MINECRAFT:","").toUpperCase();
         } else {
             particle = EnumMinecraftParticle.valueOf(List[0].toUpperCase()).getKey().toUpperCase();
         }
@@ -85,6 +85,7 @@ public class Eff_genParticlePacket extends Effect {
             Data[0] = Float.parseFloat(List[1]);
             Data[1] = Float.parseFloat(List[2]);
             Data[2] = Float.parseFloat(List[3]);
+            Data[3] = Float.parseFloat(List[4]);
         }
 
         Object Packet = Packets.PlayServerWorldParticles(location.getSingle(event), particle, offsetX.getSingle(event).floatValue(), offsetY.getSingle(event).floatValue(), offsetZ.getSingle(event).floatValue(), extra.getSingle(event).floatValue(), Number, force.getSingle(event), Data);

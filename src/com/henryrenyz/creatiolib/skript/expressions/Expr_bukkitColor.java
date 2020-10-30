@@ -57,7 +57,7 @@ public class Expr_bukkitColor extends SimpleExpression<Color> {
                 return new Color[] {Color.fromRGB(Val1,Val2,Val3)};
 
             } else if ((type.getSingle(event)).equalsIgnoreCase("BGR")) {
-                return new Color[]{Color.fromBGR(Val1,Val2,Val3)};
+                return new Color[] {Color.fromBGR(Val1,Val2,Val3)};
 
             } else {
                 return null;

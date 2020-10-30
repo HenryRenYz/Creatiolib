@@ -1,6 +1,6 @@
-package com.henryrenyz.creatiolib.skript.conditions;
+package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
-import com.henryrenyz.creatiolib.plugins.API_CoreProtect;
+import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.event.Event;
 import com.sun.istack.internal.Nullable;
@@ -30,8 +30,8 @@ public class CondCP_isEnabled extends Condition {
     }
 
     @Override
-    public boolean check(Event arg0) {
-        CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
+    public boolean check(Event event) {
+        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
         boolean enable = CoreProtect.isEnabled();
         if (enable == true) {
             return this.isNegated();

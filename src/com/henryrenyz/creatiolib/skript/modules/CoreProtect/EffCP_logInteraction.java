@@ -1,11 +1,11 @@
-package com.henryrenyz.creatiolib.skript.effects;
+package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import com.henryrenyz.creatiolib.plugins.API_CoreProtect;
+import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.Location;
@@ -35,7 +35,7 @@ public class EffCP_logInteraction extends Effect {
 
     @Override
     protected void execute(Event event) {
-        CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
+        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
         CoreProtect.logInteraction(string.getSingle(event), location.getSingle(event));
     }
 }

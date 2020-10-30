@@ -1,4 +1,4 @@
-package com.henryrenyz.creatiolib.plugins;
+package com.henryrenyz.creatiolib.modules;
 
 import net.coreprotect.CoreProtect;
 import net.coreprotect.CoreProtectAPI;
@@ -6,12 +6,12 @@ import org.bukkit.plugin.Plugin;
 
 import static org.bukkit.Bukkit.getServer;
 
-public class API_CoreProtect {
+public class hook_CoreProtect {
     public static CoreProtectAPI getCoreProtect() {
         Plugin plugin = getServer().getPluginManager().getPlugin("CoreProtect");
 
         // Check that the API is enabled
-        CoreProtectAPI CoreProtect = ((CoreProtect) plugin).getAPI();
+        CoreProtectAPI CoreProtect = ((net.coreprotect.CoreProtect) plugin).getAPI();
         if (CoreProtect.isEnabled() == false) {
             return null;
         }

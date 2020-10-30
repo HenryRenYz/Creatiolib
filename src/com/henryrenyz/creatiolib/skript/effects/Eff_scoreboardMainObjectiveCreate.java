@@ -20,7 +20,7 @@ import org.bukkit.event.Event;
 public class Eff_scoreboardMainObjectiveCreate extends Effect {
 
     static {
-        Skript.registerEffect(Eff_scoreboardMainObjectiveCreate.class, "(server|main|primary) scoreboard (add|create|register) [new] objective [named] %string% [with] criteria %string% [and|with] [display] name %string%");
+        Skript.registerEffect(Eff_scoreboardMainObjectiveCreate.class, "(main|primary) scoreboard (add|create|register) [new] objective [named] %string% [with] criteria %string% [and|with] [display] name %string%");
     }
 
     private Expression<String> board;

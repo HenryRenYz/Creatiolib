@@ -1,4 +1,4 @@
-package com.henryrenyz.creatiolib.skript.expressions;
+package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
@@ -7,7 +7,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
-import com.henryrenyz.creatiolib.plugins.API_CoreProtect;
+import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.block.Block;
@@ -15,13 +15,13 @@ import org.bukkit.event.Event;
 
 import java.util.List;
 
-public class Expr_blockLookup extends SimpleExpression<String> {
+public class ExprCP_blockLookup extends SimpleExpression<String> {
 
     static {
-        Skript.registerExpression(Expr_blockLookup.class, String.class, ExpressionType.COMBINED, "[the] core[ ]protect block lookup (result|index) %number% of %block% [from] last %timespan%");
+        Skript.registerExpression(ExprCP_blockLookup.class, String.class, ExpressionType.COMBINED, "[the] core[ ]protect block lookup (result|index) %number% of %block% [from] last %timespan%");
     }
 
-    private Expression<Integer> index;
+    private Expression<Number> index;
     private Expression<Block> block;
     private Expression<Timespan> timespan;
 
@@ -38,7 +38,7 @@ public class Expr_blockLookup extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parser) {
-        index = (Expression<Integer>) exprs[0];
+        index = (Expression<Number>) exprs[0];
         block = (Expression<Block>) exprs[1];
         timespan = (Expression<Timespan>) exprs[2];
         return true;
@@ -52,11 +52,15 @@ public class Expr_blockLookup extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event event) {
-        CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
+        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
         int Timespan = (int)timespan.getSingle(event).getMilliSeconds()/1000;
         List<String[]> list = CoreProtect.blockLookup(block.getSingle(event), Timespan);
         if (list != null) {
-            return list.get(index.getSingle(event).intValue());
+            try {
+                return list.get(index.getSingle(event).intValue());
+            } catch (IndexOutOfBoundsException e) {
+                return null;
+            }
         }
         return null;
     }

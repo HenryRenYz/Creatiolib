@@ -12,34 +12,35 @@ import ch.njol.util.Kleenean;
 import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import org.bukkit.scoreboard.Objective;
 
 @Name("Remove existing main scoreboard objective")
 @Description({"Remove an objective from main scoreboard(vanilla scoreboard)."})
-@Examples({"main scoreboard unregister objective \"PlayerCount\""})
+@Examples({"main scoreboard unregister objective \"PlayerCount\"", "\tprimary scoreboard remove objective {_objective}"})
 @Since("0.1.00")
 public class Eff_scoreboardMainObjectiveRemove extends Effect {
 
     static {
-        Skript.registerEffect(Eff_scoreboardMainObjectiveRemove.class, "(server|main|primary) scoreboard (remove|unregister) [existing] objective [named] %string%");
+        Skript.registerEffect(Eff_scoreboardMainObjectiveRemove.class, "(main|primary) scoreboard (remove|unregister) [existing] objective %objective%");
     }
 
-    private Expression<String> board;
+    private Expression<Objective> board;
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, ParseResult parser) {
-        this.board = (Expression<String>) expressions[0];
+        this.board = (Expression<Objective>) expressions[0];
         return true;
     }
 
     @Override
     public String toString(@Nullable Event event, boolean debug) {
-        return "(server|main|primary) scoreboard (remove|unregister) [existing] objective [named] %string%";
+        return "(server|main|primary) scoreboard (remove|unregister) [existing] objective %objective%";
     }
 
     @Override
     protected void execute(Event event) {
-        Bukkit.getScoreboardManager().getMainScoreboard().getObjective(board.getSingle(event)).unregister();
+        board.getSingle(event).unregister();
     }
 }
 

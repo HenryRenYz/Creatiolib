@@ -1,22 +1,22 @@
-package com.henryrenyz.creatiolib.skript.effects;
+package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
-import com.henryrenyz.creatiolib.plugins.API_CoreProtect;
-import com.sun.istack.internal.Nullable;
-import net.coreprotect.CoreProtectAPI;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.event.Event;
-import org.bukkit.block.data.BlockData;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
+import com.sun.istack.internal.Nullable;
+import net.coreprotect.CoreProtectAPI;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.event.Event;
 
-public class EffCP_logPlacement extends Effect {
+public class EffCP_logRemoval extends Effect {
 
     static {
-        Skript.registerEffect(EffCP_logPlacement.class, "log [core[ ]protect] [block] place[ |ment] [registered] as %string% at %location% placed [a] %string% [[with] [block]data %-blockdata%]");
+        Skript.registerEffect(EffCP_logRemoval.class, "log [core[ ]protect] [block] removal [registered] as %string% at %location% broke [a] %string% [[with] [block]data %-blockdata%]");
     }
 
     private Expression<String> string;
@@ -36,12 +36,12 @@ public class EffCP_logPlacement extends Effect {
 
     @Override
     public String toString(@Nullable Event event, boolean debug) {
-        return "log [core[ ]protect] [block] place[ |ment] [registered] as %player% at %location% placed %material% [[with] [block]data %-blockdata%]";
+        return "log [core[ ]protect] [block] removal [registered] as %string% at %location% broke [a] %material% [[with] [block]data %-blockdata%]";
     }
 
     @Override
     protected void execute(Event event) {
-        CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
+        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
         if (CoreProtect == null)  return;
         else {
             BlockData data = null;
@@ -49,7 +49,7 @@ public class EffCP_logPlacement extends Effect {
             if (blockdata != null) {
                 data = blockdata.getSingle(event);
             }
-            CoreProtect.logPlacement(string.getSingle(event), location.getSingle(event), mat, data);
+            CoreProtect.logRemoval(string.getSingle(event), location.getSingle(event), mat, data);
         }
     }
 }

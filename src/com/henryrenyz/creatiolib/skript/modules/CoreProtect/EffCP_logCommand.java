@@ -1,20 +1,20 @@
-package com.henryrenyz.creatiolib.skript.effects;
+package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import com.henryrenyz.creatiolib.plugins.API_CoreProtect;
+import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
-public class EffCP_logChat extends Effect {
+public class EffCP_logCommand extends Effect {
 
     static {
-        Skript.registerEffect(EffCP_logChat.class, "log [core[ ]protect] [player] chat[ting] as %player% with [msg|message] %string%");
+        Skript.registerEffect(EffCP_logCommand.class, "log [core[ ]protect] [player] command as %player% with [cmd|command] %string%");
     }
 
     private Expression<Player> player;
@@ -30,15 +30,15 @@ public class EffCP_logChat extends Effect {
 
     @Override
     public String toString(@Nullable Event event, boolean debug) {
-        return "log [core[ ]protect] [player] chat[ting] as %player% with [msg|message] %string%";
+        return "log [core[ ]protect] [player] command as %player% with [cmd|command] %string%";
     }
 
     @Override
     protected void execute(Event event) {
-        CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
+        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
         if (CoreProtect == null)  return;
         else {
-            CoreProtect.logChat(player.getSingle(event), string.getSingle(event));
+            CoreProtect.logCommand(player.getSingle(event), string.getSingle(event));
         }
     }
 }

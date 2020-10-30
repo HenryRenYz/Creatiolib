@@ -1,4 +1,4 @@
-package com.henryrenyz.creatiolib.skript.effects;
+package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
@@ -6,7 +6,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
-import com.henryrenyz.creatiolib.plugins.API_CoreProtect;
+import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.event.Event;
@@ -33,7 +33,7 @@ public class EffCP_performPurge extends Effect {
 
     @Override
     protected void execute(Event event) {
-        CoreProtectAPI CoreProtect = API_CoreProtect.getCoreProtect();
+        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
         if (CoreProtect == null)  return;
         else {
             int Timespan = (int)timespan.getSingle(event).getMilliSeconds()/1000;
