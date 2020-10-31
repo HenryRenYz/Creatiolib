@@ -19,8 +19,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 
-@Name("Generate Player Particle")
-@Description({"Generate particle that only visible for specific players."})
+@Name("Generate Particle - Player")
+@Description({"Generate particle that only visible for specific players.", "%players% can be set to multiple players."})
 @Examples({"generate \"Flame\" client particles at player for player offset by 1,1,1 and speed 1"})
 @Since("0.1.00")
 public class Eff_genParticlePlayer extends Effect {

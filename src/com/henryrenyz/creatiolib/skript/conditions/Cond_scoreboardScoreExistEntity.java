@@ -1,6 +1,9 @@
 package com.henryrenyz.creatiolib.skript.conditions;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -11,6 +14,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.scoreboard.Objective;
 
+@Name("Has Entity Score Set on Objective")
+@Description({"Whether a entity's score is set on an objective."})
+@Since("0.1.00")
 public class Cond_scoreboardScoreExistEntity extends Condition {
 
     static {

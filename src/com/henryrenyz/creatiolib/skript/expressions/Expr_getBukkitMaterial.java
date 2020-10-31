@@ -1,5 +1,8 @@
 package com.henryrenyz.creatiolib.skript.expressions;
 
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import org.bukkit.Material;
 import org.bukkit.event.Event;
 
@@ -13,6 +16,9 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.inventory.ItemStack;
 
+@Name("Bukkit Material")
+@Description({"The material(item type) used in Bukkit API, this is different to Skript's item"})
+@Since("0.1.00")
 public class Expr_getBukkitMaterial extends SimpleExpression<Material> {
 
     static {

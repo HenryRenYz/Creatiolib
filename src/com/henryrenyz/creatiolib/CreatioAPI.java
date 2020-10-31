@@ -12,7 +12,7 @@ public class CreatioAPI {
         Packets.sendPacket(p, packet);
     }
 
-    public static Object PlayServerWorldParticles(Location l, String p, float ofx, float ofy, float ofz, float ex, int n, boolean i, Object[] d) {
-        return Packets.PlayServerWorldParticles(l, p, ofx, ofy, ofz, ex, n, i, d);
+    public static Object PlayOutWorldParticles(Location l, String p, float ofx, float ofy, float ofz, float ex, int n, boolean i, Object[] d) {
+        return Packets.PlayOutWorldParticles(l, p, ofx, ofy, ofz, ex, n, i, d);
     }
 }

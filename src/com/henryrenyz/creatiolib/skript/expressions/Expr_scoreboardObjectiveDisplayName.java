@@ -2,6 +2,9 @@ package com.henryrenyz.creatiolib.skript.expressions;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.classes.Changer;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -12,6 +15,9 @@ import com.sun.istack.internal.Nullable;
 import org.bukkit.event.Event;
 import org.bukkit.scoreboard.Objective;
 
+@Name("Display Name of Scoreboard Objective")
+@Description({"Returns the display name of objective"})
+@Since("0.1.00")
 public class Expr_scoreboardObjectiveDisplayName extends SimpleExpression<String> {
 
     static {
@@ -45,7 +51,12 @@ public class Expr_scoreboardObjectiveDisplayName extends SimpleExpression<String
     @Override
     @Nullable
     protected String[] get(Event event) {
-        return new String[] {obj.getSingle(event).getDisplayName()};
+        try {
+            return new String[] {obj.getSingle(event).getDisplayName()};
+        } catch (NullPointerException e) {
+            return null;
+        }
+
     }
 
     @Override

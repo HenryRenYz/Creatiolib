@@ -15,9 +15,9 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 
-@Name("Generate World Particle")
+@Name("Generate Particle - World")
 @Description({"Generate particle that is visible for everyone."})
-@Examples({"generate \"Flame\" public particles at player for player offset by 1,1,1 and speed 1"})
+@Examples({"generate \"Flame\" public particles at event-location offset by 1,1,1 and speed 1"})
 @Since("0.1.00")
 public class Eff_genParticleWorld extends Effect {
 

@@ -2,6 +2,9 @@ package com.henryrenyz.creatiolib.skript.expressions;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.classes.Changer;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -14,6 +17,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.scoreboard.Objective;
 
+@Name("Scores of a Entity on Scoreboard Objective")
+@Description({"Represents scores of a entity on a objective, can be set, add, remove, and delete."})
+@Since("0.1.00")
 public class Expr_scoreboardScoreOperationEntity extends SimpleExpression<Number> {
 
     static {
@@ -49,8 +55,11 @@ public class Expr_scoreboardScoreOperationEntity extends SimpleExpression<Number
     @Override
     @Nullable
     protected Number[] get(Event event) {
-        String Entry = getEntry(event);
-        return new Number[] {obj.getSingle(event).getScore(Entry).getScore()};
+        try {
+            return new Number[] {obj.getSingle(event).getScore(getEntry(event)).getScore()};
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
 

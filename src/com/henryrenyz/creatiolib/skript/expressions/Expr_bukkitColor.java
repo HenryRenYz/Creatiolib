@@ -1,6 +1,10 @@
 package com.henryrenyz.creatiolib.skript.expressions;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -10,6 +14,10 @@ import com.sun.istack.internal.Nullable;
 import org.bukkit.Color;
 import org.bukkit.event.Event;
 
+@Name("Bukkit Color")
+@Description({"Color that used in Bukkit API.", "%string% can be set to \"RGB\" or \"BRG\""})
+@Examples({"generate \"REDSTONE\" public particles at player offset by 1,1,1 and extra 0 with data \"RGB\" color 123,123,123 and size 2"})
+@Since("0.1.00")
 public class Expr_bukkitColor extends SimpleExpression<Color> {
 
     static {

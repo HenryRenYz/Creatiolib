@@ -1,6 +1,9 @@
 package com.henryrenyz.creatiolib.skript.expressions;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -11,6 +14,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.scoreboard.Objective;
 
+@Name("Main Scoreboard Objective")
+@Description({"Returns an objective in main scoreboard", "The return value is a Bukkit Objective, can be used in scoreboard operation syntaxes."})
+@Since("0.1.00")
 public class Expr_scoreboardMainObjective extends SimpleExpression<Objective> {
 
     static {

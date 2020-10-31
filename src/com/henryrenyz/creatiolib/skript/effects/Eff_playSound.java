@@ -15,8 +15,8 @@ import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
-@Name("Generate Player Particle")
-@Description({""})
+@Name("Play Better Sound")
+@Description({"Play sound at a location to players, this can play resource pack sound as well.", "%players% can be set to multiple players."})
 @Examples({"playsound \"creatio.sound_1\" at event-player to all players with volume 0.5 and pitch 0.25"})
 @Since("0.1.00")
 public class Eff_playSound extends Effect {

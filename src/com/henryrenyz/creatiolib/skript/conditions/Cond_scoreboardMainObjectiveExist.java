@@ -1,6 +1,8 @@
 package com.henryrenyz.creatiolib.skript.conditions;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -9,6 +11,8 @@ import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
+@Name("Is Main Scoreboard Objective Exist")
+@Since("0.1.00")
 public class Cond_scoreboardMainObjectiveExist extends Condition {
 
     static {
