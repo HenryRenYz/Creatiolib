@@ -1,6 +1,5 @@
 package com.henryrenyz.creatiolib.modules;
 
-import net.coreprotect.CoreProtect;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.plugin.Plugin;
 

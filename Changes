@@ -1,0 +1,4 @@
+0.1.02a
+Adding config reading and updating system.
+Adding update checker.
+Adding plugin hook, when CoreProtect is not installed, all syntax that connected to it will return either null or false.

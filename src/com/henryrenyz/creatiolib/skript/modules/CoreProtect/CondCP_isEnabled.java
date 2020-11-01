@@ -1,5 +1,6 @@
 package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
+import com.henryrenyz.creatiolib.Creatio;
 import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.event.Event;
@@ -17,6 +18,8 @@ public class CondCP_isEnabled extends Condition {
         Skript.registerCondition(CondCP_isEnabled.class, "core[ ]protect (1¦is|2¦is(n't| not)) enable[d]");
     }
 
+    private Boolean enable;
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, ParseResult parser) {
@@ -31,8 +34,12 @@ public class CondCP_isEnabled extends Condition {
 
     @Override
     public boolean check(Event event) {
-        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
-        boolean enable = CoreProtect.isEnabled();
+        if (Creatio.hooked_Coreprotect) {
+            CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
+            enable = CoreProtect.isEnabled();
+        } else {
+            enable = false;
+        }
         if (enable == true) {
             return this.isNegated();
         } else {

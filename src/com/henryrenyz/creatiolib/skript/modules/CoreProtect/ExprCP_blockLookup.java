@@ -7,6 +7,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
+import com.henryrenyz.creatiolib.Creatio;
 import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
@@ -52,14 +53,16 @@ public class ExprCP_blockLookup extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event event) {
-        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
-        int Timespan = (int)timespan.getSingle(event).getMilliSeconds()/1000;
-        List<String[]> list = CoreProtect.blockLookup(block.getSingle(event), Timespan);
-        if (list != null) {
-            try {
-                return list.get(index.getSingle(event).intValue());
-            } catch (IndexOutOfBoundsException e) {
-                return null;
+        if (Creatio.hooked_Coreprotect) {
+            CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
+            int Timespan = (int)timespan.getSingle(event).getMilliSeconds()/1000;
+            List<String[]> list = CoreProtect.blockLookup(block.getSingle(event), Timespan);
+            if (list != null) {
+                try {
+                    return list.get(index.getSingle(event).intValue());
+                } catch (IndexOutOfBoundsException e) {
+                    return null;
+                }
             }
         }
         return null;

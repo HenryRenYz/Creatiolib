@@ -6,6 +6,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
+import com.henryrenyz.creatiolib.Creatio;
 import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
@@ -33,11 +34,15 @@ public class EffCP_performPurge extends Effect {
 
     @Override
     protected void execute(Event event) {
-        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
-        if (CoreProtect == null)  return;
-        else {
-            int Timespan = (int)timespan.getSingle(event).getMilliSeconds()/1000;
-            CoreProtect.performPurge(Timespan);
+        if (Creatio.hooked_Coreprotect) {
+            CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
+            if (CoreProtect == null)  return;
+            else {
+                int Timespan = (int)timespan.getSingle(event).getMilliSeconds()/1000;
+                CoreProtect.performPurge(Timespan);
+            }
+        } else {
+            return;
         }
     }
 }

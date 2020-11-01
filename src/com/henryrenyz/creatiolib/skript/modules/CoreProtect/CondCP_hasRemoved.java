@@ -6,6 +6,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
+import com.henryrenyz.creatiolib.Creatio;
 import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
@@ -41,12 +42,16 @@ public class CondCP_hasRemoved extends Condition {
 
     @Override
     public boolean check(Event event) {
-        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
-        int T1 = (int)timespan1.getSingle(event).getMilliSeconds()/1000;
-        int T2 = (int)timespan2.getSingle(event).getMilliSeconds()/1000;
-        boolean enable = CoreProtect.hasRemoved(string.getSingle(event),block.getSingle(event),T1,T2);
-        if (enable == true) return this.isNegated();
-        else return !this.isNegated();
+        if (Creatio.hooked_Coreprotect) {
+            CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
+            int T1 = (int)timespan1.getSingle(event).getMilliSeconds()/1000;
+            int T2 = (int)timespan2.getSingle(event).getMilliSeconds()/1000;
+            boolean enable = CoreProtect.hasRemoved(string.getSingle(event),block.getSingle(event),T1,T2);
+            if (enable == true) return this.isNegated();
+            else return !this.isNegated();
+        } else {
+            return false;
+        }
     }
 }
 

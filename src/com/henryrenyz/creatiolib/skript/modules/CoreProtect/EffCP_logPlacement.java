@@ -1,5 +1,6 @@
 package com.henryrenyz.creatiolib.skript.modules.CoreProtect;
 
+import com.henryrenyz.creatiolib.Creatio;
 import com.henryrenyz.creatiolib.modules.hook_CoreProtect;
 import com.sun.istack.internal.Nullable;
 import net.coreprotect.CoreProtectAPI;
@@ -41,15 +42,19 @@ public class EffCP_logPlacement extends Effect {
 
     @Override
     protected void execute(Event event) {
-        CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
-        if (CoreProtect == null)  return;
-        else {
-            BlockData data = null;
-            Material mat = Material.getMaterial(material.getSingle(event));
-            if (blockdata != null) {
-                data = blockdata.getSingle(event);
+        if (Creatio.hooked_Coreprotect) {
+            CoreProtectAPI CoreProtect = hook_CoreProtect.getCoreProtect();
+            if (CoreProtect == null)  return;
+            else {
+                BlockData data = null;
+                Material mat = Material.getMaterial(material.getSingle(event));
+                if (blockdata != null) {
+                    data = blockdata.getSingle(event);
+                }
+                CoreProtect.logPlacement(string.getSingle(event), location.getSingle(event), mat, data);
             }
-            CoreProtect.logPlacement(string.getSingle(event), location.getSingle(event), mat, data);
+        } else {
+            return;
         }
     }
 }
