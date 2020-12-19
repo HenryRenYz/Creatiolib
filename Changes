@@ -2,3 +2,18 @@
 Adding config reading and updating system.
 Adding update checker.
 Adding plugin hook, when CoreProtect is not installed, all syntax that connected to it will return either null or false.
+
+0.1.10a
+Introduced MultiblockAPI and MachineAPI
+Introduced RawText API
+Introduced NBT API
+Introduced Json messaging system
+Introduced command system
+Enhanced PacketAPI.
+Skript Syntax optimized
+
+
+
+
+
+

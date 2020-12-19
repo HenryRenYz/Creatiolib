@@ -29,11 +29,74 @@ MAIN:
   HOOKED: '%prefix%%n%Hooked with &e&l%0%'
   HOOK_FAILED: '%prefix%%e%Trying to hook &e&l%0%%e% failed!'
   UPDATE:
-    - '&7&m----------------------------------------------------------'
+    - '&7&m----------------------------------------------------------------'
+    - '%prefix%%n%UPDATE CHECKER : &9&l%0% &e-> &9&l%1%'
     - '%prefix%%s%An Update Found! New features /& bug fixes, check it here:'
-    - '  &c&lhttps://github.com/HenryRenYz/CreatioLib/releases'
-    - '&7&m----------------------------------------------------------'
+    - '              &c&lhttps://github.com/HenryRenYz/CreatioLib/releases'
+    - '&7&m----------------------------------------------------------------'
   UPDATE_DISABLED:
     - '%prefix%%w%Update checker was disabled in config file,'
     - '  %w%check the website manually to make sure you have the latest update.'
   METRIC_DISABLED: '%prefix%%w%Metric was disabled in config file.'
+  ERROR:
+    NEGATIVE: '%prefix%%e%Invalid syntax: &6%0% %e%cannot be a negative number!'
+    IS_NULL: '%prefix%%e%Invalid syntax: &6%0% %e%cannot be null!'
+    INVALID: '%prefix%%e%Invalid syntax: &6%0% %e%is not a valid type!'
+    INVALID_ARG: '%prefix%%e%Invalid argument: &6%0% %e% is not a valid argument!'
+    NOT_NUM: '%prefix%%e%Invalid argument: &6%0% %e%is not a number!'
+  NO_PERM: '%prefix%%e%You don''t have permission to do this!'
+  RELOAD:
+    CONFIG: '%prefix%%n%Reloading all configs!'
+    STRUCTURE_CONFIG: '%prefix%%n%Reloading all multiblock structures!'
+    SINGLE: '%prefix%%n%Reloading &6%0%'
+    DONE_SINGLE: '%prefix%s%File &6%0% %s%loaded successfully.'
+    DONE: '%prefix%&6%0% %s%files was loaded successfully.'
+    DONT_EXIST: '%prefix%%w%File &6%0% %w%does not exist!'
+    CORRUPT: '%prefix%%e%Structure &6%0% %e%was corrupted! Check it with example to find out if a section is missing!'
+  MULTIBLOCK_API:
+    CREATE: '%prefix%%s%Structure &6&l%0% %s%created.'
+    REMOVE: '%prefix%%s%Structure &6&l%0% &7(&f%1%&7) %s%removed.'
+    LIST:
+      HEADER: '%prefix%%n%Listing all &6&l%0%%n%:'
+      FOOTER: '%prefix%%n%Total %0% records.'
+      NOT_FOUND: '%prefix%%n%There''s no &6%0%%n% recorded in the server.'
+    SAVE: '%prefix%%s%All structures data saved!'
+    INFO:
+      STRUCTURES:
+        HEADER: '%prefix%%n%Info of structure &6&l%0%%n%:'
+        NOT_EXIST: '%prefix%%n%No structure fonnd with uuid &6&l%0%%n%.'
+        NOT_FOUND: '%prefix%%n%No structure found.'
+      REGISTERED:
+        HEADER: '%prefix%%n%Info of registered structure &6&l%0%%n%:'
+        NOT_EXIST: '%prefix%%n%No registered structure fonnd with namespace &6&l%0%%n%.'
+#Messages that used in hooked plugins
+  HOOK:
+    SKRIPT:
+      PREFIX: '&8&l[&b&lCreatio&3&lLib &7- &6&lSkript &8&l] &r'
+      ERROR:
+        GEN_PARTICLE:
+          DATA:
+            - '%prefix%%e%Invalid data syntax: ParticleParam cannot be set to &6&n%0%%e%! Valid form:'
+            - '          %e%* ITEM_CRACK                         '
+            - '          - %itemstack% (stone, iron pickaxe)'
+            - '          %e%* REDSTONE                           '
+            - '          - %string% (bukkitColor or string (packet only) dx,dy,dz,size; "0.5,0.5,0.5,2")'
+            - '          %e%* BLOCK_CRACK BLOCK_DUST FALLING_DUST'
+            - '          - %blockdata% ()'
+          PARTICLE: '%prefix%%e%Invalid particle name: &6&n%0% is not a particle name!'
+
+#Messages for /creatio command
+COMMAND:
+  USAGE:
+    CREATIO: '%prefix%%n%Usage: /creatio <reload/structures>'
+    RELOAD: '%prefix%%n%Usage: /creatio reload [structures/all]'
+    STRUCTURES:
+      USAGE: '%prefix%%n%Usage: /creatio structures <list/create/remove/save>'
+      CREATE: '%prefix%%n%Usage: /creatio structures create <Name Space> <Facing(etc. north)>'
+      FAILED: '%prefix%%w%Structure construction failed! Reason: &6%0%'
+      NO_TARGET: '%prefix%%w%Please target at a valid structure!'
+      LIST: '%prefix%%n%Usage: /creatio structures list <registered/multiblock/active/machine> [page]'
+      INFO:
+        USAGE: '%prefix%%n%Usage: /creatio structures info <registered/multiblock>'
+        MULTIBLOCK: '%prefix%%n%Usage: /creatio structures info multiblock <UUID>'
+        REGISTERED: '%prefix%%n%Usage: /creatio structures info registered <Name Space>'
